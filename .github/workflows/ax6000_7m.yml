@@ -33,13 +33,21 @@ jobs:
       run: |
         git clone -b main --single-branch https://github.com/openwrt/openwrt.git openwrt
 
-    - name: Update Install feeds
+    - name: Cache primes
+      uses: actions/cache@v6
+      with:
+        path: ~/.cp
+        key: ${{ runner.os }}-${{ hashFiles('$CONFIG_FILE') }}
+        restore-keys: |
+          ${{ runner.os }}-
+
+    - name: Update install feeds
       run: |
         cd openwrt
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-    - name: Configuration Customization
+    - name: Configuration customization
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $CUSTOM_SH
