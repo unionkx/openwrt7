@@ -1,7 +1,7 @@
 name: Build mt6000_7
 
 on: 
-#  repository_dispatch:
+  repository_dispatch:
 #  workflow_dispatch:
 #  schedule:
 #    - cron: 7 20 * * 1
