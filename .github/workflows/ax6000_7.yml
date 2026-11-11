@@ -33,23 +33,27 @@ jobs:
       run: |
         git clone -b openwrt-25.12 --single-branch https://github.com/openwrt/openwrt.git openwrt
 
-    - name: Update Install feeds
+    - name: Update feeds
       run: |
         cd openwrt
         ./scripts/feeds update -a
+
+    - name: Install feeds
+      run: |
+        cd openwrt
         ./scripts/feeds install -a
 
-    - name: Configuration Customization
+    - name: Config custom
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $CUSTOM_SH
         cd openwrt
         $GITHUB_WORKSPACE/$CUSTOM_SH
+        make defconfig
 
     - name: Download package
       run: |
         cd openwrt
-        make defconfig
         make download
 
     - name: Build firmware
