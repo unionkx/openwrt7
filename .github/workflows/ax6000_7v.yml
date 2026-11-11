@@ -54,7 +54,7 @@ jobs:
     - name: Download package
       run: |
         cd openwrt
-        make download
+        make download -j2
 
     - name: Build firmware
       run: |
