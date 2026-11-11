@@ -60,13 +60,13 @@ jobs:
         make -j2
 
     - name: Upload
-      uses: actions/upload-artifact@v7
+      uses: actions/upload-artifact@main
       with:
         name: ax6000_7
         path: openwrt/bin
 
     - name: Delete workflow runs
-      uses: Mattraks/delete-workflow-runs@v2
+      uses: Mattraks/delete-workflow-runs@main
       with:
         token: ${{ github.token }}
         repository: ${{ github.repository }}
