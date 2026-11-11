@@ -17,6 +17,7 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
+        sudo rm -rf /usr/local/lib/android /opt/hostedtoolcache/CodeQL /opt/microsoft
         sudo apt-get update
         sudo apt-get -y install bzip2 g++ gawk gcc git glibc-source libncurses-dev make
         sudo apt-get -y autoremove --purge
