@@ -1,11 +1,11 @@
-name: Build mt6000_7
+name: Build mt6000_7v
 on: 
   repository_dispatch:
   workflow_dispatch:
 #  schedule:
 #    - cron: 7 20 * * 1
 env:
-  CONFIG_FILE: mt6000.config
+  CONFIG_FILE: mt6000v.config
   CUSTOM_SH: custom7.sh
 jobs:
   build:
@@ -51,7 +51,7 @@ jobs:
     - name: Upload firmware
       uses: actions/upload-artifact@main
       with:
-        name: mt6000_7
+        name: mt6000_7v
         path: openwrt/bin
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
